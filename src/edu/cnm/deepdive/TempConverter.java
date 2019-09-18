@@ -15,17 +15,21 @@ public class TempConverter {
 
   private static void convert(Scanner scanner) {
 
-    String line;
-    while (!(line = scanner.nextLine().trim()).isEmpty()) {
-      char finalChar = line.toUpperCase().charAt(line.length() - 1);
-      if (finalChar == 'C') {
-        double celsius = parseTemperature(line);
-        System.out.printf("%.3f%n", celsiusToFahrenheit(celsius));
-      } else if (finalChar == 'F') {
+    try {
+      String line;
+      while (!(line = scanner.nextLine().trim()).isEmpty()) {
+        char finalChar = line.toUpperCase().charAt(line.length() - 1);
+        if (finalChar == 'C') {
+          double celsius = parseTemperature(line);
+          System.out.printf("%.3f%n", celsiusToFahrenheit(celsius));
+        } else if (finalChar == 'F') {
 
-        double fahrenheit = parseTemperature(line);
-        System.out.printf("%.3fC%n", fahrenheitToCelsius(fahrenheit));
+          double fahrenheit = parseTemperature(line);
+          System.out.printf("%.3fC%n", fahrenheitToCelsius(fahrenheit));
+        }
       }
+    } catch (NoSuchElementException expected) {
+      //input not doing anything with this exception
     }
   }
 
